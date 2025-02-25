@@ -1,13 +1,25 @@
-<ul class="movies-container">
-  @for(movie of movies; track movie.id) {
-  <li class="movie-card">
-    <h3>{{ movie.title }}</h3>
-    <p class="movie-details">
-      <span>Release Date: {{ movie.releaseDate }}</span>
-      <span>Budget: {{ movie.budget | budget }} </span>
-      <span>Duration: {{ movie.duration | duration }}</span>
-    </p>
-    <button [id]="movie.id">Details</button>
-  </li>
-  }
-</ul>
+<div class="movies-list-container">
+  <div class="filters-container">
+    <div class="filter-input">
+      <label for="titleFilter">Filter by Title</label>
+      <input type="text" [(ngModel)]="titleFilter" (input)="applyFilters()" />
+    </div>
+    <div class="filter-input">
+      <label for="yearFilter">Filter by Year</label>
+      <input type="text" [(ngModel)]="yearFilter" (input)="applyFilters()" />
+    </div>
+  </div>
+  <ul class="movies-container">
+    @for(movie of filteredMovies; track movie.id) {
+    <li class="movie-card">
+      <h3>{{ movie.title }}</h3>
+      <p class="movie-details">
+        <span>Release Date: {{ movie.releaseDate }}</span>
+        <span>Budget: {{ movie.budget | budget }} </span>
+        <span>Duration: {{ movie.duration | duration }}</span>
+      </p>
+      <button [id]="movie.id">Details</button>
+    </li>
+    }
+  </ul>
+</div>

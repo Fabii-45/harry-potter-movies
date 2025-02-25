@@ -24,8 +24,14 @@ export class MoviesService {
       .pipe(
         map((movies: MovieDTO[]) =>
           movies.map(
-            ({ id, title, duration, budget, release_date }) =>
-              new Movie(id, title, duration, budget, release_date)
+            (movie) =>
+              new Movie(
+                movie.id,
+                movie.title,
+                movie.duration,
+                movie.budget,
+                movie.release_date
+              )
           )
         )
       );

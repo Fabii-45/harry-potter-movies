@@ -1,23 +1,37 @@
-.movies-container {
+.movies-list-container {
   width: 800px;
   margin: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  .movie-card {
-    position: relative;
-    .movie-details {
+  .filters-container {
+    background: #e0e4eb;
+    padding: 2rem;
+    display: flex;
+    gap: 2rem;
+    .filter-input {
       display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
+      gap: 0.5rem;
     }
-    button {
-      padding: 0 1rem;
-      height: 2rem;
-      border-radius: 2rem;
-      position: absolute;
-      right: 0;
-      top: calc(50% - 1rem);
+  }
+  .movies-container {
+    padding: 0;
+    list-style-type: none;
+    .movie-card {
+      position: relative;
+      .movie-details {
+        display: flex;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+      button {
+        padding: 0 1rem;
+        height: 2rem;
+        border-radius: 2rem;
+        position: absolute;
+        right: 0;
+        top: calc(50% - 1rem);
+      }
     }
   }
 }
