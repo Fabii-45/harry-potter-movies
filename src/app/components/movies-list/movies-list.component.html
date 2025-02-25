@@ -1,0 +1,13 @@
+<ul class="movies-container">
+  @for(movie of movies; track movie.id) {
+  <li class="movie-card">
+    <h3>{{ movie.title }}</h3>
+    <p class="movie-details">
+      <span>Release Date: {{ movie.releaseDate }}</span>
+      <span>Budget: {{ movie.budget | budget }} </span>
+      <span>Duration: {{ movie.duration | duration }}</span>
+    </p>
+    <button [id]="movie.id">Details</button>
+  </li>
+  }
+</ul>
