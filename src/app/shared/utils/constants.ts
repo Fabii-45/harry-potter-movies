@@ -1,5 +1,7 @@
+import { environment } from '../../../environments/environment';
+
 export const Constants = {
   API_URLS: {
-    MOVIES: 'http://localhost:4200/movies',
+    MOVIES: environment.API_URLS.MOVIES,
   },
 };
