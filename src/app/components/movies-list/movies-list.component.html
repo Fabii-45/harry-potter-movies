@@ -18,7 +18,9 @@
         <span>Budget: {{ movie.budget | budget }} </span>
         <span>Duration: {{ movie.duration | duration }}</span>
       </p>
-      <button [id]="movie.id">Details</button>
+      <button [id]="movie.id" [routerLink]="['/movie', movie.id]">
+        Details
+      </button>
     </li>
     }
   </ul>

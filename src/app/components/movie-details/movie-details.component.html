@@ -1,0 +1,36 @@
+<div class="movie-detail-container">
+  <button [routerLink]="['/movies']">⬅ Back</button>
+  @if(movie){
+  <h1>{{ movie.title }}</h1>
+  <div class="movie-detail-poster-summary">
+    <img [src]="movie.poster" [alt]="movie.title" />
+    <p><strong>Summary:</strong> {{ movie.summary }}</p>
+  </div>
+  <h2>Détails</h2>
+  <table class="movie-details-table">
+    <tr>
+      <th>Box Office</th>
+      <td>{{ movie.boxOffice | budget }}</td>
+    </tr>
+    <tr>
+      <th>Budget</th>
+      <td>{{ movie.budget | budget }}</td>
+    </tr>
+    <tr>
+      <th>Duration</th>
+      <td>{{ movie.duration | duration }}</td>
+    </tr>
+    <tr>
+      <th>Producers</th>
+      <td>{{ movie.producers?.join(", ") }}</td>
+    </tr>
+    <tr>
+      <th>Cinematographers</th>
+      <td>{{ movie.cinematographers?.join(", ") }}</td>
+    </tr>
+  </table>
+  } @else {
+  <h1>404 Movie Not Found !</h1>
+  <p>We suggest you to go back to the list</p>
+  }
+</div>

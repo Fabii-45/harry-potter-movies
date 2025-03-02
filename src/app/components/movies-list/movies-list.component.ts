@@ -4,21 +4,22 @@ import { Movie } from '../../shared/models/movie.model';
 import { BudgetPipe } from '../../shared/pipes/budget.pipe';
 import { DurationPipe } from '../../shared/pipes/duration.pipe';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-movies-list',
   standalone: true,
-  imports: [FormsModule, BudgetPipe, DurationPipe],
+  imports: [FormsModule, RouterModule, BudgetPipe, DurationPipe],
   templateUrl: './movies-list.component.html',
   styleUrl: './movies-list.component.scss',
 })
 export class MoviesListComponent implements OnInit {
   private readonly moviesService = inject(MoviesService);
 
-  movies: Movie[] = [];
-  filteredMovies: Movie[] = [];
-  titleFilter: string = '';
-  yearFilter: string = '';
+  private movies: Movie[] = [];
+  public filteredMovies: Movie[] = [];
+  public titleFilter: string = '';
+  public yearFilter: string = '';
 
   ngOnInit(): void {
     this.moviesService.getMovies().subscribe((data) => {
@@ -27,7 +28,7 @@ export class MoviesListComponent implements OnInit {
     });
   }
 
-  applyFilters(): void {
+  public applyFilters(): void {
     this.filteredMovies = this.movies.filter((movie) => {
       const matchesTitle = this.titleFilter
         ? movie.title.toLowerCase().includes(this.titleFilter.toLowerCase())

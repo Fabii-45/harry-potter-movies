@@ -10,6 +10,11 @@ interface MovieDTO {
   duration: string;
   budget: string;
   release_date: string;
+  box_office?: string;
+  cinematographers?: string[];
+  poster?: string;
+  producers?: string[];
+  summary?: string;
 }
 
 @Injectable({
@@ -33,6 +38,28 @@ export class MoviesService {
                 movie.release_date
               )
           )
+        )
+      );
+  }
+
+  getMovieById(movieId: string): Observable<Movie> {
+    return this.httpClient
+      .get<MovieDTO>(`${Constants.API_URLS.MOVIES}/${movieId}`)
+      .pipe(
+        map(
+          (movie) =>
+            new Movie(
+              movie.id,
+              movie.title,
+              movie.duration,
+              movie.budget,
+              movie.release_date,
+              movie.box_office,
+              movie.cinematographers ?? [],
+              movie.poster,
+              movie.producers ?? [],
+              movie.summary
+            )
         )
       );
   }
